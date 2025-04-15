@@ -7,6 +7,10 @@ numNodes = 6;
 
 P = ones(numNodes, numNodes) / numNodes;
 
+P= rand(numNodes, numNodes);
+P = P ./ sum(P, 2); 
+
+disp(P)
 graphObj = digraph(P);
 plot(graphObj, 'EdgeLabel', graphObj.Edges.Weight);
 title('Homogeneous and Regular Markov Chain');
@@ -40,8 +44,8 @@ for j = 1:n
     % T = (I-Q)^{-1} = inv(I - Q)
     T = inv(I(1:n-1, 1:n-1) - Q);
     
-    disp('T:')
-    disp(T)
+    % disp('T:')
+    % disp(T)
     
     % Mean first passage times to state j from all i ≠ j
     % Kdyz vynasobim matici T zprava jednotkovou matici, 
@@ -57,11 +61,39 @@ for j = 1:n
     % odpovida postupu v prednaskach
     
     
-    disp("t:")
-    disp(t)
+    % disp("t:")
+    % disp(t)
 
     % Place into MFPT matrix
     idx = [1:j-1, j+1:n];
     MFPT(idx, j) = t;
 end
 disp(MFPT)
+
+
+%%
+% Finalni ppsti
+% Resime problem vlastnich cisel pro pi = pi P
+% strana 16 v prednasce 7
+
+
+
+[V, D] = eig(P.');
+disp(V)
+disp(D)
+
+
+[~, idx] = min(abs(diag(D) - 1));
+% idx na prvni pohled vypada, ze je vzdycky prvni sloupec
+
+pi_vec = V(:, idx);
+% disp(pi_vec)
+
+pi_vec = pi_vec / sum(pi_vec);
+% disp(pi_vec)
+
+pi_vec = real(pi_vec);
+
+
+disp("Final probabilities (stationary distribution):")
+disp(pi_vec)
