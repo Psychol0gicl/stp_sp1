@@ -39,24 +39,13 @@ for j = 1:n
     
     % T = (I-Q)^{-1} = inv(I - Q)
     T = inv(I(1:n-1, 1:n-1) - Q);
-    
     disp('T:')
     disp(T)
     
     % Mean first passage times to state j from all i ≠ j
     % Kdyz vynasobim matici T zprava jednotkovou matici, 
-    % dostanu tim vektor ocekavanych poctu kroku pred absorpci pro kazdy
-    % pocatecni stavu
-    t = T * ones(n-1, 1);
-    
-    
-    % Matlab krici ze by bylo lepsi to zapsat takto:
-    % T_not_inv = I(1:n-1, 1:n-1) - Q
-    % t = T_not_inv \ ones(n-1,1);
-    % ale za me je lepsi to zapsat tak jak jsem to udelal, protoze to
-    % odpovida postupu v prednaskach
-    
-    
+    % dostanu tim 
+    t = T \ ones(n-1, 1);
     disp("t:")
     disp(t)
 
