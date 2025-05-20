@@ -7,6 +7,8 @@ function M = computeMFPT(P)
         A = I - P;
         A(j,:) = 0;
         A(j,j) = 1;
+        disp("A:")
+        disp(A)
         b = ones(n,1);
         b(j) = 0;
         m_j = A \ b;

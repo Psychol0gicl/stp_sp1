@@ -24,7 +24,7 @@ disp(P)
 graphObj = digraph(P);
 plot(graphObj, 'EdgeLabel', graphObj.Edges.Weight);
 title('Homogeneous and Regular Markov Chain');
-U = P^1000
+%U = P^1000
 %%
 n = size(P, 1);
 
@@ -81,7 +81,7 @@ for j = 1:n
 end
 disp("Matice stredniho poctu kroku, ktere jsou treba k dosazeni stavu j za predpokladu, ze se vychazelo z i:")
 disp(MFPT)
-%different_function_MFPT = computeMFPT(P)
+% different_function_MFPT = computeMFPT(P)
 
 
 %% Finalni ppsti
