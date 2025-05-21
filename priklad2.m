@@ -62,7 +62,6 @@ modified_T = empty;
 disp('Stredni pocet pruchodu stavem j, pokud se vychazi ze stavu i, nez dojde k pohlceni. Matice T:');
 disp(T);
 
-
 t = T * ones(size_T, 1);
 % t = modified_T * ones(6, 1);
 disp("Doba pobytu v tranzientnich stavech. Vektor t.")

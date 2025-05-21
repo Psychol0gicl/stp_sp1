@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1747828666.11705 "s:/FAV/my-obsidian-vault/03-School/stp/sp/sp1/sp.tex" "sp.pdf" "sp" 1747828667.71518 0
+["pdflatex"] 1747831787.86729 "s:/FAV/my-obsidian-vault/03-School/stp/sp/sp1/sp.tex" "sp.pdf" "sp" 1747831789.80295 0
   "C:/Users/samko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1747397925 331669 dee2a3858bbc244a1aea9b020b0a23fd ""
   "C:/Users/samko/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1702292365 31952 09ce049129404f018ec54766219bc489 ""
   "C:/Users/samko/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk" 1702292366 40136 da124e6bd9dbb821e7325d1ea95aa20e ""
@@ -55,6 +55,8 @@
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
+  "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb" 1136849748 44648 23115b2a545ebfe2c526c3ca99db8b95 ""
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 fea0975e20ec51c992338362f05f1146 ""
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 687528a208fbfc1f00832bb96cccebbb ""
@@ -224,10 +226,10 @@
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1656236890 56148 51a9a8571c07b9921892ae11063ae853 ""
   "C:/Users/samko/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "pic/fav.jpg" 1700474390 15815 322c5e6ea875c485edc205c5f4f9f658 ""
-  "s:/FAV/my-obsidian-vault/03-School/stp/sp/sp1/sp.tex" 1747828663 6116 c9e89931533527ca06bc8af7400c9dda ""
-  "sp.aux" 1747828667 1653 6d8f190d2343d60cfac8b1aacada8617 "pdflatex"
-  "sp.out" 1747828667 464 ccee8569ea8d7b1e76c45cd5e73c08de "pdflatex"
-  "sp.tex" 1747828663 6116 c9e89931533527ca06bc8af7400c9dda ""
+  "s:/FAV/my-obsidian-vault/03-School/stp/sp/sp1/sp.tex" 1747831787 9515 3998fc16efb504f71e2bc62a1e479158 ""
+  "sp.aux" 1747831789 2048 680fc220c2132f6fb2c8764b643b23d1 "pdflatex"
+  "sp.out" 1747831789 575 263d3f70f1bb67b35a7b1fa8b327a773 "pdflatex"
+  "sp.tex" 1747831787 9515 3998fc16efb504f71e2bc62a1e479158 ""
   "zadani.pdf" 1741006982 75389 5c3677ef9d4cf14f86b36736c17c5d08 ""
   (generated)
   "sp.aux"
