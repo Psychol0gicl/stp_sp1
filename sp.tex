@@ -109,16 +109,21 @@ S vyřešením této rovnice nám pomůže Matlab a jejím výsledkem pro matici
 \end{bmatrix}.
 \]
 
-Nyní si spočítáme matici $\mathbf{M}$, která určuje stření počet kroků, které jsou třeba k prvnímu dosažení stavu \verb|j| za předpokladu, že se vycházelo ze stavu \verb|i|. 
-Zde na to půjdeme přes simulaci absorpčních stavů. 
-Postupně uděláme z každého stavu absorpční a spočítáme pro něj fundamentální matici\footnote{Tento postup je využit i u příkladu 2, kde je vysvětlen podrobněji.} $\mathbf{T} = (\mathbf{I} - \mathbf{Q})^{-1}$.
-Z té poté spočítáme střední dobu strávenou v tranzientních stavech $t = \mathbf{T}\mathbf{1}$ - to jsou všechny ty co nejsou absorpční. 
-Tento vektor poté vložíme do matice $\mathbf{M}$, na místo určené vybraným absorpčním stavem. 
+% Nyní si spočítáme matici $\mathbf{M}$, která určuje střední počet kroků, které jsou třeba k prvnímu dosažení stavu \verb|j| za předpokladu, že se vycházelo ze stavu \verb|i|. 
+% Zde na to půjdeme přes simulaci absorpčních stavů. 
+% Postupně uděláme z každého stavu absorpční a spočítáme pro něj fundamentální matici\footnote{Tento postup je využit i u příkladu 2, kde je vysvětlen podrobněji.} $\mathbf{T} = (\mathbf{I} - \mathbf{Q})^{-1}$.
+% Z té poté spočítáme střední dobu strávenou v tranzientních stavech $t = \mathbf{T}\mathbf{1}$ - to jsou všechny stavy, co nejsou absorpční. 
+% Tento vektor poté vložíme do matice $\mathbf{M}$, na místo určené vybraným absorpčním stavem. 
 
-Je důležité podotknout, že tímto postupem získáme na diagonále nulové prvky, protože u tohoto výpočtu vždy považujeme daný diagonální prvek za absorpční a nemá smysl pro něj spočítat první dosažení.
-Tyto diagonální prvky musíme spočítat pomocí následující rovnice: $m_{i,i}=\frac{1}{\pi_i}$, kde $m_{i,i}$ představuje prvek matice $\mathbf{M}$ na pozici $i,i$. Prvek $\pi_i$ představuje $i$-tý prvek vektoru $\pi$, vypočítaný v předchozím kroku.
+% Je důležité podotknout, že tímto postupem získáme na diagonále nulové prvky, protože u tohoto výpočtu vždy považujeme daný diagonální prvek za absorpční a nemá smysl pro něj spočítat první dosažení.
+% Tyto diagonální prvky musíme spočítat pomocí následující rovnice: $m_{i,i}=\frac{1}{\pi_i}$, kde $m_{i,i}$ představuje prvek matice $\mathbf{M}$ na pozici $i,i$. Prvek $\pi_i$ představuje $i$-tý prvek vektoru $\pi$, vypočítaný v předchozím kroku.
+Pro výpočet matice $\mathbf{M}$  využijeme maticovou rovnici z přednášky 7:
+\[
+\mathbf{M} = \bar{\mathbf{M}} \mathbf{P} + \mathbf{E}.
+\]
+Matice $\mathbf{M}$ obsahuje prvky $m_{i,j}$, které chceme zjistit. Matice $\bar{\mathbf{M}}$ je stejná jako matice $\mathbf{M}$, obsahuje pouze na diagonále nulové prvky a matice $\mathbf{E}$ je matice samých jedniček.
 
-Opět zde využijeme síly Matlabu a matice $\mathbf{M}$ nám vyjde následovně:
+Opět zde využijeme síly Matlabu a navíc toolboxu \verb|syms| a matice $\mathbf{M}$ nám vyjde následovně:
 \[
     \mathbf{M} = 
 \begin{bmatrix}
@@ -207,7 +212,7 @@ t =
 \]
 
 Nyní si musíme spočítat pravděpodobnost pohlcení pro oba absorpční stavy, začínáme-li ve stavu \verb|i|.
-Pro oba stavy budeme řešit následující rovnici: $d = \mathbf{P} d$, kde vektor $d$, který má vždy pro jeden absorpční stav hodnotu $1$ a pro ostatní absorpční stavy $0$. 
+Pro oba stavy budeme řešit následující rovnici: $d = \mathbf{P} d$, kde vektor $d$, který má vždy pro jeden absorpční stav hodnotu $1$ a pro ostatní absorpční stavy $0$, tranzientní stavy jsou v tomto vektoru reprezentovány prvky $d_i$, kde $i$ je daný tranzientní stav. 
 Pro absorpční stav $s_1$ tedy je:\linebreak  $d~=~[1, d_2, d_3, d_4, d_5, 0]^T$, kde $d_2, d_3, d_4, d_5$ jsou prvky co hledáme. Pro stav $s_6$ je vektor velice podobný, má prohozenou ovšem jedničku s nulou.
 K vyřešení obou rovnic (jedna rovnice odpovídá jednomu absorpčnímu stavu) byl využit \verb|syms| toolbox Matlabu.
 

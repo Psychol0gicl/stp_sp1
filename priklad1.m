@@ -36,6 +36,8 @@ P = [
 %]; 
 % Kontrola pro Danovu MŘ - vychazi mi to stejne.
 
+
+% U = P^100
 disp(P)
 graphObj = digraph(P);
 plot(graphObj, 'EdgeLabel', graphObj.Edges.Weight);
@@ -52,6 +54,57 @@ b = [zeros(n, 1); 1];
 pi = A \ b;
 disp("Finalni ppst spocitane pomoci soustavy rc: (vektor a)")
 disp(pi)
+%% 
+syms m11 m12 m13 m14 m15 m16 ...
+     m21 m22 m23 m24 m25 m26 ...
+     m31 m32 m33 m34 m35 m36 ...
+     m41 m42 m43 m44 m45 m46 ...
+     m51 m52 m53 m54 m55 m56 ...
+     m61 m62 m63 m64 m65 m66
+
+M = [m11 m12 m13 m14 m15 m16;
+     m21 m22 m23 m24 m25 m26;
+     m31 m32 m33 m34 m35 m36;
+     m41 m42 m43 m44 m45 m46;
+     m51 m52 m53 m54 m55 m56;
+     m61 m62 m63 m64 m65 m66];
+
+overline_M = M;
+
+for i = 1:n 
+  % M(i,i) = 1 / pi(i);
+   overline_M(i,i) = 0;
+end
+
+E = ones(6);
+eqns = M == P * overline_M  + E; % Set up equations
+solutions = solve(eqns); % Solve for each symbolic variable
+
+M = subs(M, solutions); % Fill M with the solution vector
+
+disp(M);
+
+
+%% Bonus: overeni finalnich ppsti pomoci vlastnich cisel
+
+
+[V, D] = eig(P');
+[~, idx] = min(abs(diag(D) - 1));
+% idx na prvni pohled vypada, ze je vzdycky prvni sloupec
+
+pi_vec = V(:, idx);
+% disp(pi_vec)
+
+pi_vec = pi_vec / sum(pi_vec);
+% disp(pi_vec)
+
+pi_vec = real(pi_vec);
+
+
+%disp("Finalni ppst spocitane pomoci vlastnich cisel: (vektor a)")
+%disp(pi_vec)
+
+
 %%
 n = size(P, 1);
 
@@ -106,8 +159,6 @@ for j = 1:n
     idx = [1:j-1, j+1:n];
     MFPT(idx, j) = t;
 end
-
-
 %% Pomoci finalnich ppsti zjistime diagonalni prvky matice M (MFPT):
 % stranka 19 v prezentaci 7
 for i = 1:n
@@ -115,22 +166,5 @@ for i = 1:n
 end
 disp("Matice stredniho poctu kroku, ktere jsou treba k dosazeni stavu j za predpokladu, ze se vychazelo z i: (Matice M)")
 disp(MFPT)
-%% Bonus: overeni finalnich ppsti pomoci vlastnich cisel
 
-
-[V, D] = eig(P');
-[~, idx] = min(abs(diag(D) - 1));
-% idx na prvni pohled vypada, ze je vzdycky prvni sloupec
-
-pi_vec = V(:, idx);
-% disp(pi_vec)
-
-pi_vec = pi_vec / sum(pi_vec);
-% disp(pi_vec)
-
-pi_vec = real(pi_vec);
-
-
-%disp("Finalni ppst spocitane pomoci vlastnich cisel: (vektor a)")
-%disp(pi_vec)
 
