@@ -47,7 +47,7 @@ title('Homogeneous and Regular Markov Chain');
 
 %% Pomoci soustavy rovnic
 n = size(P,1);
-A = [P' - eye(n); ones(1, n)];
+A = [P' - eye(n); ones(1, n)]; % posledni radka je podminka, ze soucet prvku finalnich ppsti musi bejt 1
 b = [zeros(n, 1); 1];
 pi = A \ b;
 disp("Finalni ppst spocitane pomoci soustavy rc: (vektor a)")
