@@ -264,8 +264,8 @@ INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\caption\caption3.st
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\caption\caption3.sty
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\appendix\appendix.sty
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\appendix\appendix.sty
-INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\matlab-prettifier\matlab-prettifier.sty
-INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\matlab-prettifier\matlab-prettifier.sty
+INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\matlab-prettifier\Matlab-prettifier.sty
+INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\matlab-prettifier\Matlab-prettifier.sty
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\base\textcomp.sty
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\base\textcomp.sty
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\tex\latex\listings\listings.sty
@@ -365,6 +365,7 @@ INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm
+INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0700.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0800.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
@@ -380,9 +381,16 @@ INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0600.tfm
 INPUT sp.aux
 INPUT .\sp.out
 INPUT .\sp.out
+INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
+INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
+INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk
+INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk
+INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
+INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
 INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk
 INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk
 INPUT C:\Users\samko\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
@@ -427,8 +435,6 @@ INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
-INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
-INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\urw\helvetic\uhvr8a.pfb
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\urw\helvetic\uhvr8a.pfb
 INPUT C:\Users\samko\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmb8a.pfb

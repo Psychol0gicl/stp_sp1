@@ -22,7 +22,7 @@
 \usepackage{subfig}
 \usepackage[toc,page]{appendix}
 \usepackage{hyperref} 
-\usepackage{matlab-prettifier}
+\usepackage{Matlab-prettifier}
 \usepackage{datetime}
 \usepackage{mathtools}
 \usepackage[thinc]{esdiff}
@@ -60,11 +60,11 @@
 \end{titlepage}
 
 \section{Úvod}
-V rámci první semestrální práce ze přemětu `Stochastické systémy a procesy' je cílem vypracovat dva příklady týkající se Markovských řetězců.
-V prvním příkladu musí být řetězec regulární a homogenní a máme pro něj určit stření počet kroků, které jsou třeba k prvnímu dosažení stavu \verb|j| za předpokladu, že se vycházelo ze stavu \verb|i|. Poté máme také určit finální pravděpodobnosti.
+V rámci první semestrální práce ze předmětu `Stochastické systémy a procesy' je cílem vypracovat dva příklady týkající se Markovských řetězců.
+V prvním příkladu musí být řetězec regulární a homogenní a máme pro něj určit střední počet kroků, které jsou třeba k prvnímu dosažení stavu \verb|j| za předpokladu, že se vycházelo ze stavu \verb|i|. Poté máme také určit finální pravděpodobnosti.
 
 V druhém příkladu pracujeme s homogenním řetězecem, kde jsou dva absorpční stavy. 
-Zde máme určit střední počet průchodů stavem \verb|j|, pokud se vychází ze stavu \verb|i|, do té doby než dojde k pohlcení. Poté musíme vypočítat dobu pobytu v tranzientním stavu. Poslední podúkol příkladu 2 je spočtení ppst skončení v absorpčím stavu, pro všechny tranzientní stavy.
+Zde máme určit střední počet průchodů stavem \verb|j|, pokud se vychází ze stavu \verb|i|, do té doby než dojde k pohlcení. Poté musíme vypočítat dobu pobytu v každém tranzientním stavu. Poslední podúkol příkladu 2 je spočtení ppsti skončení v absorpčím stavu, pro všechny tranzientní stavy.
 Celé zadání je k vidění v sekci~\ref{ssec:zadani}. 
 
 
@@ -100,8 +100,8 @@ Pro tento příklad by zvolen řetězec znázorněn na obrázku~\ref{fig:markov_
 \end{bmatrix}.
 \]
 
-Nejdříve je snažší si u tohoto příkladu spočítat finální ppsti, ty si spočítáme pomocí vztahu $\pi = \pi \mathbf{P}$, kde $\pi$ je vektor, který hledáme. Po úpravě řešíme soustavu rovnic: $(P^T - \mathbf{I})\pi^T = \mathbf{0}$, za podmínky že členy vektoru $\pi$ musí mít součet jedna.
-S vyřešením této rovnice nám pomůže matlab a jejím výsledkem pro matici $\mathbf P$ sepsanou výše je:
+U tohoto příkladu je snažší nejdříve spočítat finální ppsti.  Ty si spočítáme pomocí vztahu $\pi = \pi \mathbf{P}$, kde $\pi$ je vektor, který hledáme. Po úpravě řešíme soustavu rovnic: $(\mathbf{P}^T - \mathbf{I})\pi^T = \mathbf{0}$, za podmínky že členy vektoru $\pi$ mají součet jedna.
+S vyřešením této rovnice nám pomůže Matlab a jejím výsledkem pro matici $\mathbf P$ sepsanou výše je:
 \[
 \pi = 
 \begin{bmatrix}
@@ -111,12 +111,12 @@ S vyřešením této rovnice nám pomůže matlab a jejím výsledkem pro matici
 
 Nyní si spočítáme matici $\mathbf{M}$, která určuje stření počet kroků, které jsou třeba k prvnímu dosažení stavu \verb|j| za předpokladu, že se vycházelo ze stavu \verb|i|. 
 Zde na to půjdeme přes simulaci absorpčních stavů. 
-Postupně uděláme z každého stavu absorpční a spočítáme pro něj fundamentální matici $\mathbf{T} = (\mathbf{I} - \mathbf{Q})^{-1}$.
+Postupně uděláme z každého stavu absorpční a spočítáme pro něj fundamentální matici\footnote{Tento postup je využit i u příkladu 2, kde je vysvětlen podrobněji.} $\mathbf{T} = (\mathbf{I} - \mathbf{Q})^{-1}$.
 Z té poté spočítáme střední dobu strávenou v tranzientních stavech $t = \mathbf{T}\mathbf{1}$ - to jsou všechny ty co nejsou absorpční. 
 Tento vektor poté vložíme do matice $\mathbf{M}$, na místo určené vybraným absorpčním stavem. 
 
-Je důležité podotknout, že tímto postupem získáme na diagonále nulové prvky, protože tímto výpočtem vždy považujeme prvek za absorpční a nemá smysl pro něj spočítat první dosažení.
-Tyto diagonální prvky musíme spočítat pomocí následující rovnice: $m_{i,i}=\frac{1}{\pi_i}$, kde $m_{i,i}$ představuje prvek matice $\mathbf{M}$ na pozici $i,i$.
+Je důležité podotknout, že tímto postupem získáme na diagonále nulové prvky, protože u tohoto výpočtu vždy považujeme daný diagonální prvek za absorpční a nemá smysl pro něj spočítat první dosažení.
+Tyto diagonální prvky musíme spočítat pomocí následující rovnice: $m_{i,i}=\frac{1}{\pi_i}$, kde $m_{i,i}$ představuje prvek matice $\mathbf{M}$ na pozici $i,i$. Prvek $\pi_i$ představuje $i$-tý prvek vektoru $\pi$, vypočítaný v předchozím kroku.
 
 Opět zde využijeme síly Matlabu a matice $\mathbf{M}$ nám vyjde následovně:
 \[
@@ -181,7 +181,7 @@ Tomuto řetězci odpovídá následující matice $\mathbf{P}$:
 \]
 
 Pro splnění prvního podúkolu hledáme fundamentální matici $\mathbf{T}$. Tu nalezneme pomocí rovnice: $\mathbf{T}=(\mathbf{I}-\mathbf{Q})^{-1}$. Matice $\mathbf{Q}$ zde odpovídá matici $\mathbf{P}$, kde je vynechaný první a poslední řádek i sloupec (ty totiž odpovídají absorpčním stavům).
-K odečtení jednotkové diagonální matice $\mathbb{I}$ a spočtení inverze opět použijeme Matlab a získáme následující matici $\mathbf{T}$:
+K odečtení jednotkové diagonální matice $\mathbf{I}$ a spočtení inverze opět použijeme Matlab a získáme následující matici $\mathbf{T}$:
 
 
 
@@ -198,7 +198,7 @@ K odečtení jednotkové diagonální matice $\mathbb{I}$ a spočtení inverze o
 \end{bmatrix}.
 \]
 
-Střední dobu strávenou v tranzietních stavech $t$ získáme sečtením hodnot jendnotlivých řádků - tedy vynásobení matice $\mathbf{T}$ vektorem jedniček $\mathbf{1} = [1, 1, 1, 1]^T$.
+Střední dobu strávenou v tranzietních stavech $t$ získáme sečtením hodnot jednotlivých řádků - tedy vynásobení matice $\mathbf{T}$ vektorem jedniček $\mathbf{1} = [1, 1, 1, 1]^T$.
 \[
 t = 
 \begin{bmatrix}
@@ -208,8 +208,9 @@ t =
 
 Nyní si musíme spočítat pravděpodobnost pohlcení pro oba absorpční stavy, začínáme-li ve stavu \verb|i|.
 Pro oba stavy budeme řešit následující rovnici: $d = \mathbf{P} d$, kde vektor $d$, který má vždy pro jeden absorpční stav hodnotu $1$ a pro ostatní absorpční stavy $0$. 
-Pro absorpční stav $s_1$ tedy je: $d = [1, d_2, d_3, d_4, d_5, 0]^T$, kde $d_2, d_3, d_4, d_5$ jsou prvky co hledáme.
-K vyřešení obou rovnic pro oba absorpční stavy byl využit \verb|syms| toolbox Matlabu.
+Pro absorpční stav $s_1$ tedy je:\linebreak  $d~=~[1, d_2, d_3, d_4, d_5, 0]^T$, kde $d_2, d_3, d_4, d_5$ jsou prvky co hledáme. Pro stav $s_6$ je vektor velice podobný, má prohozenou ovšem jedničku s nulou.
+K vyřešení obou rovnic (jedna rovnice odpovídá jednomu absorpčnímu stavu) byl využit \verb|syms| toolbox Matlabu.
+
 Pro absorpční stav $s_1$ nám vyšel vektor $d$:
 \[
 d = 
@@ -255,7 +256,7 @@ d =
 \end{figure}
 \clearpage
 \section{Závěr}
-Cílem této práce bylo naučit se základní úlohy týkající se Markovských řetězeců. Pracovali jsme jak s regulárními řetězci tak s řetězecem obsahující absorpční stav. 
-Práce byla vypracována v Matlabu a tímto referátem ji považuji za úspěšně splněnou.
+Cílem této práce bylo naučit se základní úlohy týkající se Markovských řetězeců. Pracovali jsme jak s regulárními řetězci, tak s řetězecem obsahující absorpční stav. 
+Práce byla vypracována v Matlabu a napsáním tohoto referátu ji považuji za úspěšně splněnou.
 \end{document}
 
