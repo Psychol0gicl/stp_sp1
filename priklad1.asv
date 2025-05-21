@@ -1,3 +1,6 @@
+clc
+clear all
+%%
 % Idea vypoctu stredniho poctu kroku pro prvni dosazeni stavu j ze stavu i
 % je takova, ze z j-teho stavu udelam umele absorpcni a zbytek uzlu tedy
 % bude tranzientnich. Pote mohu vyuzit k vypoctu nasi ulohy maticovy
@@ -23,20 +26,33 @@ P = [
 
 
 
-P = [ 
-    0 1 0 0 0 0;
-    0.5 0 0 0 0 0;
-    0 0.5 0 0.5 0 0;
-    0 0 0.5 0 0.5 0;
-    0 0 0 0 0 1;
-    0 0 0 1 0 0;
-];
+%P = [ 
+%    0   1     0    0   0    0;
+%    1/2 0     1/2  0   0    0;
+%    0   0     1/5  4/5 0    0; 
+%    0   9/10  0    0   0    1/10;
+%    0   0     0    0   0    1;
+%    2/5 0     0    0   3/5  0;
+%]; 
+% Kontrola pro Danovu MŘ - vychazi mi to stejne.
 
 disp(P)
 graphObj = digraph(P);
 plot(graphObj, 'EdgeLabel', graphObj.Edges.Weight);
 title('Homogeneous and Regular Markov Chain');
-%U = P^1000
+%U = P^1000 
+%% Finalni ppsti
+% Resime problem vlastnich cisel pro pi = pi P
+% strana 16 v prednasce 7
+
+
+%% Pomoci soustavy rovnic
+n = size(P,1);
+A = [P' - eye(n); ones(1, n)];
+b = [zeros(n, 1); 1];
+pi = A \ b;
+disp("Finalni ppst spocitane pomoci soustavy rc: (vektor a)")
+disp(pi)
 %%
 n = size(P, 1);
 
@@ -91,23 +107,17 @@ for j = 1:n
     idx = [1:j-1, j+1:n];
     MFPT(idx, j) = t;
 end
-disp("Matice stredniho poctu kroku, ktere jsou treba k dosazeni stavu j za predpokladu, ze se vychazelo z i:")
+disp("Matice stredniho poctu kroku, ktere jsou treba k dosazeni stavu j za predpokladu, ze se vychazelo z i: (Matice M)")
 disp(MFPT)
 % different_function_MFPT = computeMFPT(P)
 
 
-%% Finalni ppsti
-% Resime problem vlastnich cisel pro pi = pi P
-% strana 16 v prednasce 7
 
+%% Pomoci finalnich ppsti zjistime diagonalni prvky matice M (MFPT):
+for i = 1:n
+    MFPT(i,i) = 1 / pi(i); 
+end
 
-%% Pomoci soustavy rovnic
-n = size(P,1);
-A = [P' - eye(n); ones(1, n)];
-b = [zeros(n, 1); 1];
-pi = A \ b;
-disp("Finalni ppst spocitane pomoci soustavy rc:")
-disp(pi)
 %% Overeni pomocí vlastních čísel
 
 
@@ -124,6 +134,6 @@ pi_vec = pi_vec / sum(pi_vec);
 pi_vec = real(pi_vec);
 
 
-disp("Finalni ppst spocitane pomoci vlastnich cisel:")
+disp("Finalni ppst spocitane pomoci vlastnich cisel: (vektor a)")
 disp(pi_vec)
 

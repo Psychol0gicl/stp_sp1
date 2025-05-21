@@ -41,6 +41,17 @@ graphObj = digraph(P);
 plot(graphObj, 'EdgeLabel', graphObj.Edges.Weight);
 title('Homogeneous and Regular Markov Chain');
 %U = P^1000 
+%% Finalni ppsti
+% Resime problem vlastnich cisel pro pi = pi P
+% strana 16 v prednasce 7
+
+%% Pomoci soustavy rovnic
+n = size(P,1);
+A = [P' - eye(n); ones(1, n)];
+b = [zeros(n, 1); 1];
+pi = A \ b;
+disp("Finalni ppst spocitane pomoci soustavy rc: (vektor a)")
+disp(pi)
 %%
 n = size(P, 1);
 
@@ -95,24 +106,16 @@ for j = 1:n
     idx = [1:j-1, j+1:n];
     MFPT(idx, j) = t;
 end
-disp("Matice stredniho poctu kroku, ktere jsou treba k dosazeni stavu j za predpokladu, ze se vychazelo z i:")
+
+
+%% Pomoci finalnich ppsti zjistime diagonalni prvky matice M (MFPT):
+% stranka 19 v prezentaci 7
+for i = 1:n
+    MFPT(i,i) = 1 / pi(i); 
+end
+disp("Matice stredniho poctu kroku, ktere jsou treba k dosazeni stavu j za predpokladu, ze se vychazelo z i: (Matice M)")
 disp(MFPT)
-% different_function_MFPT = computeMFPT(P)
-
-
-%% Finalni ppsti
-% Resime problem vlastnich cisel pro pi = pi P
-% strana 16 v prednasce 7
-
-
-%% Pomoci soustavy rovnic
-n = size(P,1);
-A = [P' - eye(n); ones(1, n)];
-b = [zeros(n, 1); 1];
-pi = A \ b;
-disp("Finalni ppst spocitane pomoci soustavy rc:")
-disp(pi)
-%% Overeni pomocí vlastních čísel
+%% Bonus: overeni finalnich ppsti pomoci vlastnich cisel
 
 
 [V, D] = eig(P');
@@ -128,6 +131,6 @@ pi_vec = pi_vec / sum(pi_vec);
 pi_vec = real(pi_vec);
 
 
-disp("Finalni ppst spocitane pomoci vlastnich cisel:")
-disp(pi_vec)
+%disp("Finalni ppst spocitane pomoci vlastnich cisel: (vektor a)")
+%disp(pi_vec)
 
