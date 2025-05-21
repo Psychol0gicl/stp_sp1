@@ -212,7 +212,7 @@ t =
 \]
 
 Nyní si musíme spočítat pravděpodobnost pohlcení pro oba absorpční stavy, začínáme-li ve stavu \verb|i|.
-Pro oba stavy budeme řešit následující rovnici: $d = \mathbf{P} d$, kde vektor $d$, který má vždy pro jeden absorpční stav hodnotu $1$ a pro ostatní absorpční stavy $0$, tranzientní stavy jsou v tomto vektoru reprezentovány prvky $d_i$, kde $i$ je daný tranzientní stav. 
+Pro oba stavy budeme řešit následující rovnici: $d = \mathbf{P} d$, kde vektor $d$, který má vždy pro jeden absorpční stav hodnotu $1$ a pro ostatní absorpční stavy $0$ a tranzientní stavy jsou v tomto vektoru reprezentovány prvky $d_i$, kde $i$ je daný tranzientní stav. 
 Pro absorpční stav $s_1$ tedy je:\linebreak  $d~=~[1, d_2, d_3, d_4, d_5, 0]^T$, kde $d_2, d_3, d_4, d_5$ jsou prvky co hledáme. Pro stav $s_6$ je vektor velice podobný, má prohozenou ovšem jedničku s nulou.
 K vyřešení obou rovnic (jedna rovnice odpovídá jednomu absorpčnímu stavu) byl využit \verb|syms| toolbox Matlabu.
 
@@ -262,6 +262,6 @@ d =
 \clearpage
 \section{Závěr}
 Cílem této práce bylo naučit se základní úlohy týkající se Markovských řetězeců. Pracovali jsme jak s regulárními řetězci, tak s řetězecem obsahující absorpční stav. 
-Práce byla vypracována v Matlabu a napsáním tohoto referátu ji považuji za úspěšně splněnou.
+Práce byla vypracována v Matlabu a napsáním tohoto referátu ji považujeme za úspěšně splněnou.
 \end{document}
 
