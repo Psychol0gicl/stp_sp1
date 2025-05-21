@@ -1,3 +1,7 @@
+clc
+clear all
+%%
+
 % Define the number of nodes
 numNodes = 6;
 
@@ -12,6 +16,23 @@ P = [
     0 0 0 0 0 1;
     0 0 0 0 0 1;
 ];
+absorbing = [1 6]
+transient = [2 3 4 5]
+
+
+
+P = [ 
+    0   1     0    0   0    0;
+    1/2 0     1/2  0   0    0;
+    0   0     1    0   0    0; 
+    0   9/10  0    0   0    1/10;
+    0   0     0    0   1    0;
+    2/5 0     0    0   3/5  0;
+];
+absorbing = [3 5]
+transient = [1 2 4 6]
+
+
 
 % Plot the Markov chain graph
 graphObj = digraph(P);
@@ -20,9 +41,6 @@ title('Homogeneous Markov Chain with absorbing states.');
 
 
 %%
-% Identify transient and absorbing states
-absorbing = [1 6]
-transient = [2 3 4 5]
 
 % Extract Q matrix (transient-to-transient)
 Q = P(transient, transient);
@@ -34,11 +52,11 @@ I = eye(size(Q));
 T = inv(I - Q);  % Fundamental matrix
 size_T = size(T,1);
 
-empty = zeros(size_T + length(absorbing))
+empty = zeros(size_T + length(absorbing));
 row_start = 2; 
 col_start = 2; 
 empty(row_start:row_start+size(T,1)-1, col_start:col_start+size(T,2)-1) = T;
-modified_T = empty
+modified_T = empty;
 % Display expected number of times in each transient state before absorption
 disp('Expected number of times in transient state j starting from i:');
 disp('Stredni pocet pruchodu stavem j, pokud se vychazi ze stavu i, nez dojde k pohlceni.');
@@ -46,8 +64,41 @@ disp(T);
 
 
 t = T * ones(size_T, 1);
-t = modified_T * ones(6, 1);
+% t = modified_T * ones(6, 1);
 disp("Doba pobytu v tranzientnich stavech.")
 disp(t)
+%% Ppst konce v danem stavu ... 
+syms d2 d3 d4 d5
+%% ... pro absorpcni stav s_1
 
+d = [1 d2 d3 d4 d5 0]';
+d = [d3 d2 1 d4 0 d5]';
 
+eqs = P * d == d;
+eqs = [
+    conj(d2) == conj(d3);
+    conj(d3)/2 + 1/2 == conj(d2);
+    (9*conj(d2))/10 + conj(d5)/10 == conj(d4);
+    (2*conj(d3))/5 == conj(d5);
+];
+% Vyřeš jen rovnice, kde jsou neznámé: d1 až d4
+sol = solve(eqs, [d2 d3 d4 d5]);
+disp("Ppst absorpce ve stavu s_1 pro stavy 2 - 5:")
+disp(sol)
+
+%% ... pro absorpcni stav s_6
+
+d = [0 d2 d3 d4 d5 1]';
+d = [d3 d2 0 d4 1 d5]';
+eqs = P * d == d;
+% Vyřeš jen rovnice, kde jsou neznámé: d1 až d4
+
+eqs = [
+    conj(d2) == conj(d3);
+    conj(d3)/2 == conj(d2);
+    (9*conj(d2))/10 + conj(d5)/10 == conj(d4);
+    (2*conj(d3))/5 + 3/5 == conj(d5);
+];
+sol = solve(eqs, [d2 d3 d4 d5]);
+disp("Ppst absorpce ve stavu s_6 pro stavy 2 - 5:")
+disp(sol)

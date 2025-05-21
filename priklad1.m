@@ -1,3 +1,6 @@
+clc
+clear all
+%%
 % Idea vypoctu stredniho poctu kroku pro prvni dosazeni stavu j ze stavu i
 % je takova, ze z j-teho stavu udelam umele absorpcni a zbytek uzlu tedy
 % bude tranzientnich. Pote mohu vyuzit k vypoctu nasi ulohy maticovy
@@ -20,11 +23,24 @@ P = [
     0 0 0 1 0 0;
 ];
 
+
+
+
+%P = [ 
+%    0   1     0    0   0    0;
+%    1/2 0     1/2  0   0    0;
+%    0   0     1/5  4/5 0    0; 
+%    0   9/10  0    0   0    1/10;
+%    0   0     0    0   0    1;
+%    2/5 0     0    0   3/5  0;
+%]; 
+% Kontrola pro Danovu MŘ - vychazi mi to stejne.
+
 disp(P)
 graphObj = digraph(P);
 plot(graphObj, 'EdgeLabel', graphObj.Edges.Weight);
 title('Homogeneous and Regular Markov Chain');
-%U = P^1000
+%U = P^1000 
 %%
 n = size(P, 1);
 
